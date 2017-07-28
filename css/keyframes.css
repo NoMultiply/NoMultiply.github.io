@@ -49,3 +49,22 @@
 .fly_out_to_left {
     animation: fly_out_to_left 1s;
 }
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate {
+    transform-origin: 50% 50%;
+    animation: rotate 0.5s linear infinite;
+}
