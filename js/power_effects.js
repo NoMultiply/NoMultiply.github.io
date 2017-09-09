@@ -2,7 +2,6 @@
 /* Light Loader
 /*========================================================*/
 var lightLoader = function(c, cw, ch){
-	
 	var _this = this;
 	this.c = c;
 	this.ctx = c.getContext('2d');
@@ -23,9 +22,26 @@ var lightLoader = function(c, cw, ch){
 	this.hueStart = 0
 	this.hueEnd = 120;
 	this.hue = 0;
-	this.gravity = .15;
+	this.gravity = 0.15;
 	this.particleRate = 4;	
 					
+
+	this.update_size = function () {
+	    this.cw = document.body.clientWidth;
+	    this.ch = document.body.clientHeight;
+	    this.c.width = this.cw;
+	    this.c.height = this.ch;
+	    var length = this.ch < this.cw ? this.ch : this.cw;
+	    this.loaderHeight = 30 * length / 1080;
+	    this.loaderWidth = 600 * length / 1080;
+	    this.loader = {
+	        x: length * 0.01,
+	        y: length * 0.15
+	    };
+	    this.particleLift = 180 * length / 1080;
+	    //this.hueEnd = 120 * length / 1080;
+	}
+
 	/*========================================================*/	
 	/* Initialize
 	/*========================================================*/
@@ -140,9 +156,10 @@ var lightLoader = function(c, cw, ch){
 	/*========================================================*/	
 	/* Animation Loop
 	/*========================================================*/
+	var timeout_id;
 	this.loop = function(){
 		var loopIt = function(){
-			requestAnimationFrame(loopIt, _this.c);
+		    timeout_id = requestAnimationFrame(loopIt, _this.c);
 			_this.clearCanvas();
 			
 			_this.createParticles();
@@ -157,6 +174,9 @@ var lightLoader = function(c, cw, ch){
 		loopIt();					
 	};
 
+	this.stop = function () {
+	    cancelAnimationFrame(timeout_id);
+	}
 };
 
 /*========================================================*/	

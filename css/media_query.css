@@ -1,0 +1,104 @@
+﻿@media only screen and (orientation: portrait) {
+    .title {
+        font-size: 12vw;
+    }
+
+    .btn {
+        font-size: 10vw;
+    }
+
+        .btn.inline {
+            font-size: 9vw;
+        }
+
+    .music_picture {
+        font-size: 10vw;
+    }
+
+    .music_editor_text {
+        font-size: 5vw;
+    }
+
+    .score {
+        font-size: 9vw;
+    }
+
+    .statement {
+        font-size: 6vw;
+    }
+
+    #about_game .introduction {
+        font-size: 12vw;
+    }
+
+    #about_game .link {
+        font-size: 6vw;
+    }
+
+    .hit_tag {
+        font-size: 9vw;
+    }
+
+    .shine {
+        width: 19.2vw;
+        height: 10.8vw;
+    }
+
+    /*slider*/
+    .scroll {
+        width: 57.4vw;
+        height: 28.89vw;
+    }
+
+    .scrollContainer {
+        width: 200vh;
+    }
+
+        .scrollContainer .current .inside {
+            width: 21.30vw;
+            height: 26.66vw;
+        }
+
+        .scrollContainer .panel {
+            width: 15.74vw;
+            height: 21.76vw;
+            margin-right: 2.31vw;
+        }
+
+    .scroll li .inside span {
+        width: 18.24vw;
+        height: 3.43vw;
+        line-height: 3.43vw;
+        bottom: -1.57vw;
+        left: 1.48vw;
+        font-size: 1.30vw;
+    }
+
+    .btnMode a.prev {
+        left: calc((80% - 60vw) / 2);
+    }
+
+    .btnMode a.next {
+        right: calc((80% - 60vw) / 2);
+    }
+
+    /* progressbar*/
+    #progressbar {
+        top: 50vw;
+        right: -27vw;
+        width: 71vw;
+    }
+
+    .level_img {
+        width: 12vw;
+        height: 27.3vw;
+    }
+
+    #start_game_back {
+        margin-left: 2vw;
+    }
+
+    #rank {
+        font-size: 40vw;
+    }
+}

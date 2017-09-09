@@ -1,3 +1,4 @@
+///<reference path='jquery-3.2.1.min.js' />
 /**
  * Created by Jsy on 2017/7/24.
  */
@@ -12,17 +13,35 @@ $(function () {
     $parent.append($first);
     $parent.prepend($last);
     var totalPanels = $(".scrollContainer").get(0).children.length;
-    var regWidth = $(".panel").css("width");
-    var regImgWidth = $(".panel img").css("width");
-    var movingDistance = 195;
-    var curWidth = 230;
-    var curHeight = 312;
-    var curImgWidth = 230;
-    var curImgHeight = 288;
-    var othersW = 170;
-    var othersH = 235;
-    var othersImgW = 170;
-    var othersImgH = 213;
+    /*var regWidth = $(".panel").css("width");
+    var regImgWidth = $(".panel img").css("width");*/
+    var length;
+    var movingDistance;
+    var curWidth;
+    var curHeight;
+    var curImgWidth;
+    var curImgHeight;
+    var othersW;
+    var othersH;
+    var othersImgW;
+    var othersImgH;
+    var updata_size = () => {
+        length = document.body.clientHeight < document.body.clientWidth ? document.body.clientHeight : document.body.clientWidth;
+        movingDistance = 195 * length / 1080;
+        curWidth = 230 * length / 1080;
+        curHeight = 312 * length / 1080;
+        curImgWidth = 230 * length / 1080;
+        curImgHeight = 288 * length / 1080;
+        othersW = 170 * length / 1080;
+        othersH = 235 * length / 1080;
+        othersImgW = 170 * length / 1080;
+        othersImgH = 213 * length / 1080;
+        $panels.css({ width: othersW, height: othersH }).find('img').css({ width: othersImgW, height: othersImgH });
+        $('#panel_' + curPanel).css({ width: curWidth, height: curHeight }).find('img').css({ width: curImgWidth, height: curImgHeight });
+        var movement = -(curPanel - 1) * movingDistance;
+        $(".scrollContainer").css({ "left": movement });
+    }
+    window.addEventListener('resize', updata_size);
     var $panels = $('#slider .scrollContainer > li');
     var $container = $('#slider .scrollContainer');
     $panels.css({ 'float': 'left', 'position': 'relative' });
@@ -68,8 +87,9 @@ $(function () {
         }
     }
     // Set up "Current" panel and next and prev 设置当前元素和上下
-    growBigger("#panel_1");
     var curPanel = 1;
+    updata_size();
+    growBigger('#panel_1');
     $("#panel_" + (curPanel + 1)).click(function () { change(true); return false; });
     $("#panel_" + (curPanel - 1)).click(function () { change(false); return false; });
     //when the prev/next arrows are clicked

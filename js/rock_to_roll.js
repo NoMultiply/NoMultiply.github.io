@@ -67,13 +67,6 @@
     }
     score_unit.init();
 
-    /*var hit_tags = [
-        { x: 0.25, y: 0.25 },
-        { x: 0.75, y: 0.25 },
-        { x: 0.75, y: 0.75 },
-        { x: 0.25, y: 0.75 }
-    ];*/
-
     game_context.draw_round_rect = function (x, y, w, h, r, stroke_color, fill_color, line_width) {
         this.beginPath();
         this.save();
@@ -129,6 +122,9 @@
         if (main_timer) {
             clearInterval(main_timer);
             main_timer = undefined;
+        }
+        if (cl) {
+            cl.stop();
         }
         $('audio').get(0).pause();
         switch (page) {
@@ -229,8 +225,9 @@
     }
 
     window.onresize = function () {
-        power_canvas.width = document.body.clientWidth;
-        power_canvas.height = document.body.clientHeight;
+        if (cl) {
+            cl.update_size();
+        }
         game_canvas.width = document.body.clientWidth;
         game_canvas.height = document.body.clientHeight;
         handle_size = game_canvas.height < game_canvas.width ? game_canvas.height : game_canvas.width;
@@ -719,8 +716,9 @@
         for (var i = 0; i < directions.length; ++i)
             press[i] = false;
         score_unit.init();
+        document.getElementById("score").innerHTML = "Score :" + score_unit.score;
         status = 1;
-        cl = new lightLoader(power_canvas, power_canvas.width, power_canvas.height, 20);
+        cl = new lightLoader(power_canvas, power_canvas.width, power_canvas.height);
         setupRAF();
         cl.init();
         update_progressBar(0);

@@ -1,9 +1,22 @@
-enter: 创建音符
-上/下方向键：升/降音符
-左/右方向键：左/右切换当前操作的音符
-page up/page down或'[' / ']'：高八度/降八度
-小键盘* 或 shift ：升半调
-小键盘. 或 ctrl：附点延时
-backspace：删除音符
-小键盘+/- 或 '<' / '>' ：切换音符类型（四分、八分等的切换）
-小键盘数字键或者数字键 ： 直接切换音调。
+工程文件介绍：
+index.html：工程的html，定义了不同游戏的页面div，通过page--active设置显示与否。
+css文件夹：工程的css文件。
+    css\keyframes.css：动画的css定义。
+    css\rock_to_roll.css：游戏相关的css定义。
+    css\jquery-ui.css：引用的jquery-ui库
+js文件夹：工程的js文件。
+    js\rock_to_roll.js：游戏逻辑的实现。
+    js\btn_effects.js：
+    js\power_effects.js：
+    js\scroll_img.js：
+    js\jquery-ui.min.js：引用的jquery-ui库。
+    js\jquery-3.2.1.min.js：引用的jquery库。
+res文件夹：工程用到的资源。
+    fonts文件夹：引用的字体。
+    img文件夹：使用的图片资源。
+    level文件夹：关卡设定相关文件。
+    music文件夹：测试音乐和默认音乐文件夹。
+    node文件夹：存放了一些编号的曲子，可以直接复制使用。
+favicon.ico：游戏的图标。
+webServer.py：开发用的本地服务器文件。
+readme.txt：你即将看完的文件。
